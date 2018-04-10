@@ -25,6 +25,7 @@ function getUserInputAsArray(message, numberOfItems){
 	do {
 		outputArray = prompt(promptMessage).split(";");
 		if(outputArray.length === numberOfItems){
+			outputArray = trimArrayStrings(outputArray);
 			return outputArray;
 		}
 		tryCounter++
@@ -36,8 +37,8 @@ function getUserInputAsArray(message, numberOfItems){
 function trimArrayStrings(array){
 	for(let i = 0; i < array.length; i++){
 		if(typeof array[i] === "string"){
-			array[i] = trim(array[i]);
+			array[i] = array[i].trim();
 		}
 	}
+	return array;
 }
-
