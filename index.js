@@ -17,18 +17,27 @@ function randomInt(minimumNum, maximumNum){
 	return Math.floor(Math.random() * (maximumNum - minimumNum + 1)) + minimumNum;
 }
 
-function getUserInputAsArray(message, numberOfItems, itemTypeExpected = "string"){
-	let inputValid = false;
+function getUserInputAsArray(message, numberOfItems){
 	let outputArray = [];
+	let tryCounter = 1;
+	let promptMessage = message;
 	
 	do {
-		outputArray = prompt(message).split(", ");
+		outputArray = prompt(promptMessage).split(";");
 		if(outputArray.length === numberOfItems){
-			if(checkArrayElementsType(itemTypeExpected)){
-				inputValid = true;
-				}
-			}
+			return outputArray;
 		}
-
-	} while (//input not valid)
+		tryCounter++
+		promptMessage = "ATTEMPT " + tryCounter.toString() + "\n\n" + message +  "\n\nBe sure to enter each item separated by a semi-colon, 'item1; item2; item3'."
+	} while (tryCounter < 4)
+	return [];
 }
+
+function trimArrayStrings(array){
+	for(let i = 0; i < array.length; i++){
+		if(typeof array[i] === "string"){
+			array[i] = trim(array[i]);
+		}
+	}
+}
+
