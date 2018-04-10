@@ -2,15 +2,25 @@ function playMash(){
 	
 	// Intialize Categories
 	let homeTypes = ['Mansion', 'Apartment', 'Shack', 'House'];
-	// Get user input - Type of Cars (5)
-	// Get user input - Potential Spouses (6)
-	// Get user input - Cities (7)
-	// Get user input - Occupations (8)
-	// Get user input - Children (9)
+	let cars = getUserInputAsArray("Enter five car types/styles separated by semi-colons (;):", 5);
+	let spouses = getUserInputAsArray("Enter the name of six different people separated by semi-colons (;):", 6);
+	let locations = getUserInputAsArray("Enter seven different cities/locations separated by semi-colons (;):", 7);
+	let occupations = getUserInputAsArray("Enter eight different occupations separated by semi-colons (;):", 8);
+	let childrenNumbers = getUserInputAsArray("Enter nine different numnbers separated by semi-colons (;):", 9);
 
-	//Determine homeType - random num
+	let storyResults = {};
 
-	//Determine cars - random num
+	storyResults.home = homeTypes[randomInt(0, 3)];
+	storyResults.car = cars[randomInt(0, 4)];
+	storyResults.spouse = spouses[randomInt(0, 5)];
+	storyResults.location = locations[randomInt(0, 6)];
+	storyResults.occupation = occupations[randomInt(0, 7)];
+	storyResults.childrenCount = childrenNumbers[randomInt(0, 8)];
+
+	document.getElementById("story").innerHTML = "You will own a " + storyResults.home + " in " + storyResults.location + ". ";
+	document.getElementById("story").innerHTML += "You will be unhappily married to " + storyResults.spouse + ", who happens to drive a " + storyResults.car + ". ";
+	document.getElementById("story").innerHTML += "Before your marriage turned sour, you and " + storyResults.spouse + " had " + storyResults.childrenCount + ". ";
+	document.getElementById("story").innerHTML += "Oh, and to top it all off, you just lost your " + storyResults.occupation + " job." + " Best of luck in your life!"
 }
 
 function randomInt(minimumNum, maximumNum){
@@ -42,3 +52,5 @@ function trimArrayStrings(array){
 	}
 	return array;
 }
+
+playMash();
