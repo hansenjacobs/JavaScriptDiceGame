@@ -14,5 +14,21 @@ function playMash(){
 }
 
 function randomInt(minimumNum, maximumNum){
-	return Math.floor(Math.random() * (maximumNum - minimumNum + 1)) + minimumNum
+	return Math.floor(Math.random() * (maximumNum - minimumNum + 1)) + minimumNum;
+}
+
+function getUserInputAsArray(message, numberOfItems, itemTypeExpected = "string"){
+	let inputValid = false;
+	let outputArray = [];
+	
+	do {
+		outputArray = prompt(message).split(", ");
+		if(outputArray.length === numberOfItems){
+			if(checkArrayElementsType(itemTypeExpected)){
+				inputValid = true;
+				}
+			}
+		}
+
+	} while (//input not valid)
 }
