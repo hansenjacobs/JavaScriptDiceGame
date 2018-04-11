@@ -2,10 +2,39 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+
 	<title>M.A.S.H.</title>
+
+	<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="index.css">
 </head>
 <body>
+	<header>
+		<div class="title">
+			<h1 class="title">M. A. S. H.</h1>
+			<h2 class="title">Mansion Apartment Shack House</h2>
+		</div>
+		<div class="intro">
+			<p class="intro">Remember that game in middle school you would play with your friends on the bus that would predict you future.  Who you are going to marry, what car you'll drive and most importantly, what kind of a house you will live in - a mansion, an apartment, a shack or a house.</p>
+			<p class="intro">Feeling nostalgic?  Let's play!</p>
+		</div>
+	</header>
+
+	<div class="input">
+		<form action="">
+			<fieldset>
+				<label for="player-name">Your name:</label>
+				<input type="text" name="player-name" id="player-name"><br>
+				<label for="car-list">List 5 vehicles:</label>
+				<textarea name="car-list" id="car-list" rows="5" cols="25"></textarea>
+			</fieldset>
+		</form>
+	</div>
 	<div id="story"></div>
+	
+
 	<script src="index.js"></script>
+	<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 </body>
 </html>

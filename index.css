@@ -1,0 +1,29 @@
+h1.title{
+	margin-bottom: 0px;
+}
+
+h2.title{
+	font-size: 15px;
+	margin-top: 0;
+
+}
+
+p {
+	line-height: 100%;
+}
+
+fieldset{
+	border: 1px solid gray;
+}
+
+label{
+	margin-top: 5px;
+}
+
+input{
+	margin-top: 5px;
+}
+
+textarea{
+	margin-top: 5px;
+}

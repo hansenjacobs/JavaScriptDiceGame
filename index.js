@@ -91,7 +91,6 @@ function determineChildren(){
 function generateChildNameList(){
 	
 	let childNameList = ["Elvin","Hans","Jules","Edwardo","Jan","Nicky","Abe","Buddy","Jamie","Kasey","Vito","Ambrose","Wilmer","Rickey","Wyatt","Jake","Devin","Eduardo","Ned","Winford","Stephen","Gaston","Bernie","Isaiah","Bob","Emile","Rudolf","Elbert","Rodger","Jon","Isaac","Gil","Brice","Isiah","Renato","Travis","Bryant","Carol","Pablo","Bruce","Danial","Sonny","Gail","Junior","Felix","Marcos","Hai","Kraig","Lewis","Kurt","Alicef","Callie","Carley","Mari","Tamar","Cynthia","Valene","Joslyn","Maritza","Vivien","Tamica","Sandi","Lilia","Alessandra","Elena","Shandra","Johanna","Emogene","Epifania","Victoria","Evette","Nita","Daina","Gwendolyn","Rebekah","Rubie","Karima","Tenesha","Kirstin","Laveta","Davida","Verdie","Earlene","Ghislaine","Jani","Maryann","Delora","Susy","Willa","Joanna","Deena","Sherlyn","Cecila","Elenore","Katherine","Ailene","Genevive","Sheron","Enid","Danae"];
-	console.log(childNameList);
 	childNameList = shuffleArray(childNameList);
 
 	return childNameList;
@@ -197,10 +196,7 @@ function writeStory(storyResults){
 						<p>During your mid-life crisis, you decided you needed to buy your dream vehicle, a ${storyResults.car}. </p>
 						<h4>The end</h4>
 					`;
-
 	}
 
 	return output;
 }
-
-playMash();
