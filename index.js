@@ -9,10 +9,7 @@ function playMash(){
 
 	let storyResults = determineStoryResults(storyInputs);
 
-	document.getElementById("story").innerHTML = "You will own a " + storyResults.home + " in " + storyResults.location + ". ";
-	document.getElementById("story").innerHTML += "You will be unhappily married to " + storyResults.spouse + ", who happens to drive a " + storyResults.car + ". ";
-	document.getElementById("story").innerHTML += "Before your marriage turned sour, you and " + storyResults.spouse + " had " + storyResults.childrenCount + ". ";
-	document.getElementById("story").innerHTML += "Oh, and to top it all off, you just lost your " + storyResults.occupation + " job." + " Best of luck in your life!"
+	document.getElementById("story").innerHTML = writeStory(storyResults);
 }
 
 function randomInt(minimumNum, maximumNum){
@@ -25,6 +22,7 @@ function getUserInputAsArray(message, numberOfItems){
 	let promptMessage = message;
 	
 	do {
+		// *****This does not account for if the user doesn't enter anything *****
 		outputArray = prompt(promptMessage).split(";");
 		if(outputArray.length === numberOfItems){
 			outputArray = trimArrayStrings(outputArray);
@@ -53,7 +51,7 @@ function determineStoryResults(storyInputs){
 	storyResults.spouse = storyInputs.spouses[randomInt(0, 5)];
 	storyResults.location = storyInputs.locations[randomInt(0, 6)];
 	storyResults.occupation = storyInputs.occupations[randomInt(0, 7)];
-	storyResults.childrenCount = determineChildren();
+	storyResults.children = determineChildren();
 
 	return storyResults;
 }
@@ -96,18 +94,39 @@ function writeStory(storyResults){
 	
 	let output = "";
 
-	switch(randomInt(1, 3)){
+	switch(1/*randomInt(1, 3)*/){
 		case 1:
-			output += "Congratulations on your fantastic life!  You married the love of your life, " + storyResults.spouse + ". "
+			output += `
+						<h1>Your Life Story</h1>
+						<p>Congratulations on your fantastic life! You married the love of your life, ${storyResults.spouse}.
+						The two of you settled in ${storyResults.location} to raise the family you always dreamed of in your roomy, expensive ${storyResults.home}.
+					`;
 			if(storyResults.children.length > 1){
-				output += "Because of your happy marriage, you spawned " + storyResults.children.length " EVIL children - ";
-				output += storyResults.children.join(", ") + ". " + storyResults.children[0]
-				output += " is spending life in prison for being a serial killer, convicted of killing" + randomInt(8, 1000) + " people."
-				output += '' //LEFT OFF HERE
+				output += `
+							Because of your happy marriage, you raised ${storyResults.children.length} chidlren - ${storyResults.children.join(", ")}. 
+							However, despite your love for them, you raised some evil, evil children. 
+							Your oldest, ${storyResults.children[0]}, is currently serving life in prison for murder.  
+							And ${storyResults.children[1]} has joined the terrorist group ISIS and has not been heard from since.
+						`;
+			} else if(storyResults.children.length ===1){
+				output += `
+							Because of your happy marriage, you raised one child - ${storyResults.children[0].toString()}.
+							However, despite your love for ${storyResults.children[0].toString()}, you raised an evil, evil child.
+							${storyResults.children[0].toString()} is wanted for murder of ${randomInt(4, 80)} people.  Currently, ${storyResults.children[0]}
+							has eluded the authorities, but it is only a matter of time before ${storyResults.children[0]} is captured and found guilty.
+						`;
 			} else {
-				output += "Despite you happy, loving marriage"
+				output += `
+							Despite your happy and loving marriage, you and ${storyResults.spouse} never reared any children.  This is probably for the best,
+							they would have been evil anyway. </p>
+						`;
 			}
-			output += "Despite your great marriage, you created "
+			output += `
+						<p>You stay at your ${storyResults.occupation} job, even though your boss is a total dick and you hate the work.  
+						It pays for your ${storyResults.home} and your beat-up ${storyResults.car}.</p>
+						
+					`;
+			output += `<h4>Do you believe the saying, 'Lucky in love, lucky in life'?  </h4>`;
 			break;
 
 		case 2:
@@ -121,3 +140,5 @@ function writeStory(storyResults){
 
 	return output;
 }
+
+playMash();
