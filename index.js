@@ -2,7 +2,7 @@ function playMash(){
 	
 	let storyInputs = {}
 	
-	storyInputs.homeTypes = ['Mansion', 'Apartment', 'Shack', 'House'];
+	storyInputs.homeTypes = ['mansion', 'apartment', 'shack', 'house'];
 	
 	storyInputs.cars = getUserInputAsArray("Enter five car types/styles separated by semi-colons (;):", 5);
 	if(storyInputs.cars === null) {return}
@@ -111,7 +111,7 @@ function writeStory(storyResults){
 	
 	let output = "<h1>Your Life Story</h1>";
 
-	switch(randomInt(1, 1)){
+	switch(randomInt(1, 3)){
 		case 1:
 			output += `
 						<p>Congratulations on your fantastic life! You married the love of your life, ${storyResults.spouse}.
@@ -149,7 +149,7 @@ function writeStory(storyResults){
 			if(storyResults.children.length !== 1){
 				output += `
 							<p>What a life you have lived!  
-							You had ${storyResults.children.length} children ${if(storyResults.children.length > 0){"- " + storyResults.children.join(",") + " -"}}
+							You had ${storyResults.children.length} children ${(storyResults.children.length > 0 ? "- " + storyResults.children.join(", ") + " -" : "")} 
 							with your partner, ${storyResults.spouse}, despite not being married.
 						`;
 			} else {
@@ -163,13 +163,40 @@ function writeStory(storyResults){
 			output += `
 					All of you happily live in a small ${storyResults.home} in ${storyResults.location}. </p>
 					<p>As you don't make much money at your ${storyResults.occupation} job, you are forced to drive a ${storyResults.car}. 
-					You may not have the biggest home or the best car, but you and your family live happily ever after.</p>
+					You may not have the biggest home or the best car, but you and your family lived happily ever after.</p>
 					
 					`;
 			break;
 
 		case 3:  // Fallthrough
 		default:
+			output += `
+					<p>You have lived the American dream.  After finishing college, you got a job as a ${storyResults.occupation}.  Shortly thereafter,
+					you got married to your soul mate, ${storyResults.spouse}.  While planning your wedding with 300 guests, you and ${storyResults.spouse}
+					 were also busy moving into your first place, a cozy ${storyResults.home} in ${storyResults.location}.</p>
+					`;
+			if(storyResults.children.length > 1){
+				output += `
+						<p>After a few years of wedded bliss, you started having children.  You raised ${storyResults.children.length} children - 
+						${storyResults.children.join(", ")}.  All of whom turned out to be great people with amazing families of their own.
+						`;
+			} else if(storyResults.children.length === 1){
+				output += `
+						<p>After a few years of wedded bliss, you started having children.  You raised ${storyResults.children.length} child - 
+						${storyResults.children[0].toString()}. While ${storyResults.children[0].toString()} was a spoiled only child, still turned out
+						to be a great person.  What more can a parent ask for?</p>
+						`;
+			} else {
+				output += `
+						<p>After a few years of wedded bliss, you considered having children.  However, you and ${storyResults.spouse} decided that
+						children weren't right for your lifestyle - you can take a lot of trip with the money saved!</p>
+						`;
+			}
+
+			output += `
+						<p>During your mid-life crisis, you decided you needed to buy your dream vehicle, a ${storyResults.car}. </p>
+						<h4>The end</h4>
+					`;
 
 	}
 
