@@ -1,13 +1,11 @@
 function playMash(){
 	
-	// Intialize Categories
 	let storyInputs = {}
 	storyInputs.homeTypes = ['Mansion', 'Apartment', 'Shack', 'House'];
 	storyInputs.cars = getUserInputAsArray("Enter five car types/styles separated by semi-colons (;):", 5);
 	storyInputs.spouses = getUserInputAsArray("Enter the name of six different people separated by semi-colons (;):", 6);
 	storyInputs.locations = getUserInputAsArray("Enter seven different cities/locations separated by semi-colons (;):", 7);
-	storyInputs.occupations = getUserInputAsArray("Enter eight different occupations separated by semi-colons (;):", 8);
-	storyInputs.childrenNumbers = getUserInputAsArray("Enter nine different numnbers separated by semi-colons (;):", 9);
+	storyInputs.occupations = getUserInputAsArray("Enter eight different occupations separated by semi-colons (;):", 8);	
 
 	let storyResults = determineStoryResults(storyInputs);
 
@@ -55,7 +53,7 @@ function determineStoryResults(storyInputs){
 	storyResults.spouse = storyInputs.spouses[randomInt(0, 5)];
 	storyResults.location = storyInputs.locations[randomInt(0, 6)];
 	storyResults.occupation = storyInputs.occupations[randomInt(0, 7)];
-	storyResults.childrenCount = storyInputs.childrenNumbers[randomInt(0, 8)];
+	storyResults.childrenCount = determineChildren();
 
 	return storyResults;
 }
@@ -71,6 +69,8 @@ function determineChildren(){
 		children.push(childNameList[randomInt(0, childNameList.length - 1)]);
 		childNameList.splice(childNameList.indexOf(children[i]), 1);
 	}
+
+	return children;
 }
 
 function generateChildNameList(){
@@ -93,11 +93,31 @@ function shuffleArray(array){
 }
 
 function writeStory(storyResults){
-	// determine storyline by random number
+	
+	let output = "";
 
-	// build story output
+	switch(randomInt(1, 3)){
+		case 1:
+			output += "Congratulations on your fantastic life!  You married the love of your life, " + storyResults.spouse + ". "
+			if(storyResults.children.length > 1){
+				output += "Because of your happy marriage, you spawned " + storyResults.children.length " EVIL children - ";
+				output += storyResults.children.join(", ") + ". " + storyResults.children[0]
+				output += " is spending life in prison for being a serial killer, convicted of killing" + randomInt(8, 1000) + " people."
+				output += '' //LEFT OFF HERE
+			} else {
+				output += "Despite you happy, loving marriage"
+			}
+			output += "Despite your great marriage, you created "
+			break;
 
-	// return story output
+		case 2:
+
+			break;
+
+		case 3:  // Fallthrough
+		default:
+
+	}
+
+	return output;
 }
-
-console.log(generateChildNameList());
