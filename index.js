@@ -109,12 +109,11 @@ function shuffleArray(array){
 
 function writeStory(storyResults){
 	
-	let output = "";
+	let output = "<h1>Your Life Story</h1>";
 
 	switch(randomInt(1, 1)){
 		case 1:
 			output += `
-						<h1>Your Life Story</h1>
 						<p>Congratulations on your fantastic life! You married the love of your life, ${storyResults.spouse}.
 						The two of you settled in ${storyResults.location} to raise the family you always dreamed of in your roomy, expensive ${storyResults.home}.
 					`;
@@ -147,7 +146,26 @@ function writeStory(storyResults){
 			break;
 
 		case 2:
+			if(storyResults.children.length !== 1){
+				output += `
+							<p>What a life you have lived!  
+							You had ${storyResults.children.length} children ${if(storyResults.children.length > 0){"- " + storyResults.children.join(",") + " -"}}
+							with your partner, ${storyResults.spouse}, despite not being married.
+						`;
+			} else {
+				output += `
+							<p>What a life you have lived!  
+							You had ${storyResults.children.length} child - ${storyResults.children[0]} - 
+							with your partner, ${storyResults.spouse}, despite not being married.
+						`;
+			}
 
+			output += `
+					All of you happily live in a small ${storyResults.home} in ${storyResults.location}. </p>
+					<p>As you don't make much money at your ${storyResults.occupation} job, you are forced to drive a ${storyResults.car}. 
+					You may not have the biggest home or the best car, but you and your family live happily ever after.</p>
+					
+					`;
 			break;
 
 		case 3:  // Fallthrough
