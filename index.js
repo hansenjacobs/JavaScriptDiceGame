@@ -1,11 +1,20 @@
 function playMash(){
 	
 	let storyInputs = {}
+	
 	storyInputs.homeTypes = ['Mansion', 'Apartment', 'Shack', 'House'];
+	
 	storyInputs.cars = getUserInputAsArray("Enter five car types/styles separated by semi-colons (;):", 5);
+	if(storyInputs.cars === null) {return}
+	
 	storyInputs.spouses = getUserInputAsArray("Enter the name of six different people separated by semi-colons (;):", 6);
+	if(storyInputs.spouses === null) {return}
+	
 	storyInputs.locations = getUserInputAsArray("Enter seven different cities/locations separated by semi-colons (;):", 7);
+	if(storyInputs.locations === null) {return}
+
 	storyInputs.occupations = getUserInputAsArray("Enter eight different occupations separated by semi-colons (;):", 8);	
+	if(storyInputs.occupations === null) {return}
 
 	let storyResults = determineStoryResults(storyInputs);
 
@@ -22,8 +31,16 @@ function getUserInputAsArray(message, numberOfItems){
 	let promptMessage = message;
 	
 	do {
-		// *****This does not account for if the user doesn't enter anything *****
-		outputArray = prompt(promptMessage).split(";");
+
+		let inputString = prompt(promptMessage);
+			
+			if(inputString === null){return null}
+
+			while(inputString.charAt(inputString.length - 1) === ";") {
+				inputString = inputString.substr(0, inputString.length - 1);
+			}
+			outputArray = inputString.split(";")
+
 		if(outputArray.length === numberOfItems){
 			outputArray = trimArrayStrings(outputArray);
 			return outputArray;
@@ -94,7 +111,7 @@ function writeStory(storyResults){
 	
 	let output = "";
 
-	switch(1/*randomInt(1, 3)*/){
+	switch(randomInt(1, 1)){
 		case 1:
 			output += `
 						<h1>Your Life Story</h1>
