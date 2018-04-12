@@ -200,3 +200,5 @@ function writeStory(storyResults){
 
 	return output;
 }
+
+playMash();
